@@ -33,7 +33,7 @@ eksctl create cluster \
 #to check cluster status
 aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 
-# Installation for Dashboard & Prometheus & Grafana & Alert Manager
+# Dashboard&Prometheus&Grafana&Alert Manager
 1. kubernetes dashboard
 kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
 2. heapster: for backend 
