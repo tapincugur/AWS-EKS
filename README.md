@@ -33,7 +33,7 @@ eksctl create cluster \
 #to check cluster status
 aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 
-# Dashboard&Prometheus&Grafana&Alert Manager
+# Installations 
 1. kubernetes dashboard
 kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
 2. heapster: for backend 
@@ -54,19 +54,18 @@ kubectl proxy
 9. login 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
 
-#installation helm 
+# Helm
 kubectl create serviceaccount tiller --namespace kube-system
 kubectl apply -f ~/Desktop/eks/installation/rbac-config.yaml
 
-#installation prometheus&grafana&alertmanager for collecting metrics and logs of the EKS Cluster ( If you store data, you have to mount disk to your EKS Cluster )
-
-kubectl create namespace prometheus ( You can change type : LoadBalancer to access from Internet )
+# Prometheus
+kubectl create namespace prometheus #( You can change type : LoadBalancer to access from Internet )
 helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
 
 #If you use small instance type on EKS Cluster Inf., you should increase your instance count for being ready all pods of Prometheus
 eksctl scale nodegroup --cluster eks-k8s-test --name eks-k8s-test-nodegroup --nodes 2 --region eu-central-1 --profile ugur-playground
 
-#installation grafana
+# Grafana
 helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana
 #data source for grafana "url=http://prometheus-server.prometheus.svc.cluster.local "
 
