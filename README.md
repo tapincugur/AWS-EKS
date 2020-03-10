@@ -69,5 +69,5 @@ eksctl scale nodegroup --cluster eks-k8s-test --name eks-k8s-test-nodegroup --no
 helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana \
 #data source for grafana "url=http://prometheus-server.prometheus.svc.cluster.local "
 
-
+#I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
 
