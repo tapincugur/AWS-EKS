@@ -3,7 +3,7 @@
 
 aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/CloudFormation/twosubnet.yaml --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 
-#deleting vpc by cloudformation aws cli command \
+#deleting vpc by cloudformation (aws cli command) \
 #aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 
 ## Create EKS Cluster with aws-cli&eksctl (It takes 15 minutes to be done)
