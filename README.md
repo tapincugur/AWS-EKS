@@ -3,17 +3,17 @@
 
 aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/CloudFormation/twosubnet.yaml --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 
-#deleting vpc by cloudformation aws cli command 
+#deleting vpc by cloudformation aws cli command \
 #aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 
-##Create EKS Cluster with eksctl ( It takes 15 minutes to be done )
-#This 
+## Create EKS Cluster with aws-cli&eksctl (It takes 15 minutes to be done)
+#This \
 aws eks --region eu-central-1 --profile ugur-playground create-cluster \
 --name eks-test-k8s \
 --role-arn arn:aws:iam::318731615233:role/eks-test-k8s-role \
 --resources-vpc-config subnetIds=subnet-1,subnet-2,subnet-3,subnet-4,securityGroupIds=sg-0851e8b0ced328e50
 
-#or this
+#or this \
 eksctl create cluster \
 --name eks-k8s-test \
 --version 1.14 \
@@ -30,7 +30,7 @@ eksctl create cluster \
 --region eu-central-1 \
 --profile ugur-playground
 
-#to check cluster status
+#to check cluster status \
 aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 
 # Installations 
