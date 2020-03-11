@@ -60,3 +60,16 @@ helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --
 
 #I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
 
+# ALB Ingress Controller
+
+#Create an IAM OIDC provider and associate it with your cluster
+eksctl utils associate-iam-oidc-provider --cluster=protel-k8s-test --approve --region eu-central-1 --profile protel-playground
+
+#Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller
+kubectl apply -f ~/Desktop/protel-eks/installation/ingress/rbac-role.yaml
+
+#Deploy the AWS ALB Ingress controller YAML
+kubectl apply -f ~/Desktop/protel-eks/installation/ingress/alb-ingress-controller.yaml
+
+#Verify that the deployment was successful and the controller started
+kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
