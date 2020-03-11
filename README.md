@@ -56,20 +56,24 @@ helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometh
 
 # Grafana 
 helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana \
-#data source for grafana "url=http://prometheus-server.prometheus.svc.cluster.local "
 
 #I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
 
 # ALB Ingress Controller
 
 #Create an IAM OIDC provider and associate it with your cluster
-eksctl utils associate-iam-oidc-provider --cluster=protel-k8s-test --approve --region eu-central-1 --profile protel-playground
+eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
 
 #Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller
-kubectl apply -f ~/Desktop/protel-eks/installation/ingress/rbac-role.yaml
+kubectl apply -f ~/Desktop/eks/installation/ingress/rbac-role.yaml
 
 #Deploy the AWS ALB Ingress controller YAML
-kubectl apply -f ~/Desktop/protel-eks/installation/ingress/alb-ingress-controller.yaml
+kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yaml
 
 #Verify that the deployment was successful and the controller started
 kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
+
+# Application running on EKS CLuster (2048-game)
+kubectl apply -f ~/Desktop/eks/installation/2048/2048-namespace.yaml
+kubectl apply -f ~/Desktop/eks/installation/2048/2048-deployment.yaml
+kubectl apply -f ~/Desktop/eks/installation/2048/2048-service.yaml
