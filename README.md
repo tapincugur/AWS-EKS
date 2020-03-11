@@ -33,25 +33,17 @@ eksctl create cluster \
 #to check cluster status \
 aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 
-# Installations 
-1. kubernetes dashboard
+# Kubernetes Dashboard 
+1) kubernetes dashboard
 kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
-2. heapster: for backend 
-kubectl apply -f ~/Desktop/eks/installation/heapster.yaml
-3. db with influxd
-kubectl apply -f ~/Desktop/eks/installation/influxdb.yaml
-4. biding 
-kubectl apply -f ~/Desktop/eks/installation/heapster-rbac.yaml
-5. Apply the service account
+2) Apply the service account
 kubectl apply -f ~/Desktop/eks/installation/eks-admin-service-account.yaml
-6. bind service 
-kubectl apply -f ~/Desktop/eks/installation/heapster-rbac.yaml
-7. get token 
+3) get token 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
 copy token to login 
-8. start server 
+4) start server 
 kubectl proxy
-9. login 
+5) login 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
 
 # Helm
@@ -61,9 +53,6 @@ kubectl apply -f ~/Desktop/eks/installation/rbac-config.yaml
 # Prometheus
 kubectl create namespace prometheus #( You can change type : LoadBalancer to access from Internet )\
 helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
-
-#If you use small instance type on EKS Cluster Inf., you should increase your instance count for being ready all pods of Prometheus \
-eksctl scale nodegroup --cluster eks-k8s-test --name eks-k8s-test-nodegroup --nodes 2 --region eu-central-1 --profile ugur-playground
 
 # Grafana 
 helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana \
