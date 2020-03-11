@@ -55,7 +55,7 @@ kubectl create namespace prometheus #( You can change type : LoadBalancer to acc
 helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
 
 # Grafana 
-helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana \
+helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
 
 #I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
 
