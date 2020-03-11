@@ -187,6 +187,14 @@ alertmanager:
     ##
     size: 2Gi
 
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-10-10-135-18.eu-central-1.compute.internal    
+
     ## alertmanager data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -263,12 +271,12 @@ alertmanager:
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources: {}
-    # limits:
-    #   cpu: 10m
-    #   memory: 32Mi
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
+  limits:
+      cpu: 10m
+      memory: 32Mi
+  requests:
+      cpu: 10m
+      memory: 32Mi
 
   ## Security context to be added to alertmanager pods
   ##
@@ -487,12 +495,12 @@ nodeExporter:
   ## Ref: https://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources: {}
-    # limits:
-    #   cpu: 200m
-    #   memory: 50Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 30Mi
+  limits:
+      cpu: 200m
+      memory: 50Mi
+  requests:
+      cpu: 100m
+      memory: 30Mi
 
   ## Security context to be added to node-exporter pods
   ##
@@ -743,6 +751,14 @@ server:
     ##
     size: 8Gi
 
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-10-10-135-18.eu-central-1.compute.internal
+
     ## Prometheus server data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -831,12 +847,12 @@ server:
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources: {}
-    # limits:
-    #   cpu: 500m
-    #   memory: 512Mi
-    # requests:
-    #   cpu: 500m
-    #   memory: 512Mi
+  limits:
+      cpu: 500m
+      memory: 512Mi
+  requests:
+      cpu: 500m
+      memory: 512Mi
 
   ## Vertical Pod Autoscaler config
   ## Ref: https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler
@@ -1000,12 +1016,12 @@ pushgateway:
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources: {}
-    # limits:
-    #   cpu: 10m
-    #   memory: 32Mi
-    # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
+  limits:
+      cpu: 10m
+      memory: 32Mi
+  requests:
+      cpu: 10m
+      memory: 32Mi
 
   ## Security context to be added to push-gateway pods
   ##
@@ -1062,6 +1078,14 @@ pushgateway:
     ## pushgateway data Persistent Volume size
     ##
     size: 2Gi
+
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - ip-10-10-135-18.eu-central-1.compute.internal
 
     ## pushgateway data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
