@@ -140,12 +140,12 @@ ingress:
   #      - chart-example.local
 
 resources: {}
-#  limits:
-#    cpu: 100m
-#    memory: 128Mi
-#  requests:
-#    cpu: 100m
-#    memory: 128Mi
+limits:
+    cpu: 100m
+    memory: 128Mi
+requests:
+    cpu: 100m
+    memory: 128Mi
 
 ## Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
@@ -214,17 +214,17 @@ initChownData:
   ## Ref: http://kubernetes.io/docs/user-guide/compute-resources/
   ##
   resources: {}
-  #  limits:
-  #    cpu: 100m
-  #    memory: 128Mi
-  #  requests:
-  #    cpu: 100m
-  #    memory: 128Mi
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
 
 
 # Administrator credentials when not using an existing secret (see below)
 adminUser: admin
-adminPassword: PASSWORD!!!
+adminPassword: password
 
 # Use an existing secret for the admin user.
 admin:
@@ -392,6 +392,7 @@ grafana.ini:
     user: "username@gmail.com"
     password: "password"
     from_address: "username@gmail.com"
+    
 ## LDAP Authentication can be enabled with the following values on grafana.ini
 ## NOTE: Grafana will fail to start if the value for ldap.toml is invalid
   # auth.ldap:
@@ -426,11 +427,8 @@ ldap:
 ## NOTE: To enable, grafana.ini must be configured with smtp.enabled
 ## ref: http://docs.grafana.org/installation/configuration/#smtp
 #smtp:
-#  # `existingSecret` is a reference to an existing secret containing the smtp configuration
-#  # for Grafana.
-#  existingSecret: ""
-#  userKey: "user"
-#  passwordKey: "password"
+  # `existingSecret` is a reference to an existing secret containing the smtp configuration
+  # for Grafana.
 
 ## Sidecars that collect the configmaps with specified label and stores the included files them into the respective folders
 ## Requires at least Grafana 5 to work and can't be used together with parameters dashboardProviders, datasources and dashboards
@@ -438,12 +436,12 @@ sidecar:
   image: kiwigrid/k8s-sidecar:0.1.99
   imagePullPolicy: IfNotPresent
   resources: {}
-#   limits:
-#     cpu: 100m
-#     memory: 100Mi
-#   requests:
-#     cpu: 50m
-#     memory: 50Mi
+  limits:
+    cpu: 100m
+    memory: 100Mi
+  requests:
+    cpu: 50m
+    memory: 50Mi
   # skipTlsVerify Set to true to skip tls verification for kube api calls
   # skipTlsVerify: true
   dashboards:
