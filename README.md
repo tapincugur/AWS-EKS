@@ -64,8 +64,7 @@ $ helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prome
 ### Grafana
 ```bash
 $ helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
-
-#I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
+I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
 ```
 ### ALB Ingress Controller
 ```bash
