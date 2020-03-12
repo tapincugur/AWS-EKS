@@ -7,8 +7,9 @@ Deleting vpc by cloudformation (aws cli command)
 # $ aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 ```
 ## Create EKS Cluster with aws-cli&eksctl (It takes 15 minutes to be done)
-#This \
-aws eks --region eu-central-1 --profile ugur-playground create-cluster \
+```bash
+This 
+$ aws eks --region eu-central-1 --profile ugur-playground create-cluster \
 --name eks-test-k8s \
 --role-arn arn:aws:iam::318731615233:role/eks-test-k8s-role \
 --resources-vpc-config subnetIds=subnet-1,subnet-2,subnet-3,subnet-4,securityGroupIds=sg-0851e8b0ced328e50
@@ -32,7 +33,7 @@ eksctl create cluster \
 
 #to check cluster status \
 aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
-
+```
 # Kubernetes Dashboard 
 1) kubernetes dashboard
 kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
