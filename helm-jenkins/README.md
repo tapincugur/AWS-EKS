@@ -1,14 +1,16 @@
 # Jenkins in Kubernetes
+Firstly, you should clone this repository on your server.
+You can edit "plugin.txt" file according to your code requirements. 
 
 ### Build the Jenkins Docker image
-You can build the image yourself
+Build your docker image (jenkins-master):
 ```bash
+$ docker build . -t "jenkins-master" -f  Dockerfile
 
-# Build the image
-$ docker build -t  .
-
-# Push the image
-$ docker push 
+# Push the image to AWS ECR Service
+$ eval $( aws ecr get-login --no-include-email --region eu-central-1 --profile ugur-playground | sed 's|https://||' )
+$ docker tag jenkins-master:latest ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-master:latest
+$ docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-master:latest
 ```
 
 ### Deploy Jenkins helm chart to Kubernetes
