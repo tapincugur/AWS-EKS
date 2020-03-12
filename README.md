@@ -6,7 +6,7 @@ $ aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/C
 Deleting vpc by cloudformation (aws cli command)
 # $ aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 ```
-## Create EKS Cluster with aws-cli&eksctl (It takes 15 minutes to be done)
+## Create EKS Cluster (It takes 15 minutes to be done)
 ```bash
 You can create EKS Cluster with "aws cli" or "eksctl"
 
@@ -36,26 +36,27 @@ $ eksctl create cluster \
 to check EKS cluster status
 $ aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 ```
-# Kubernetes Dashboard 
+# Kubernetes Dashboard
+```bash
 1) kubernetes dashboard
-kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
+$ kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
 2) Apply the service account
-kubectl apply -f ~/Desktop/eks/installation/eks-admin-service-account.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/eks-admin-service-account.yaml
 3) get token 
-kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
+$ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
 copy token to login 
 4) start server 
-kubectl proxy
+$ kubectl proxy
 5) login 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
 
 # Helm
-kubectl create serviceaccount tiller --namespace kube-system \
-kubectl apply -f ~/Desktop/eks/installation/rbac-config.yaml
+$ kubectl create serviceaccount tiller --namespace kube-system 
+$ kubectl apply -f ~/Desktop/eks/installation/rbac-config.yaml
 
 # Prometheus
-kubectl create namespace prometheus #( You can change type : LoadBalancer to access from Internet )\
-helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
+$ kubectl create namespace prometheus #( You can change type : LoadBalancer to access from Internet )
+$ helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
 
 # Grafana 
 helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
@@ -80,3 +81,4 @@ kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print
 kubectl apply -f ~/Desktop/eks/installation/2048/2048-namespace.yaml \
 kubectl apply -f ~/Desktop/eks/installation/2048/2048-deployment.yaml \
 kubectl apply -f ~/Desktop/eks/installation/2048/2048-service.yaml
+```
