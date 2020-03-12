@@ -33,7 +33,7 @@ $ eksctl create cluster \
 --region eu-central-1 \
 --profile ugur-playground
 
-To check cluster status
+to check EKS cluster status
 $ aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 ```
 # Kubernetes Dashboard 
