@@ -65,16 +65,16 @@ $ helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana 
 
 # ALB Ingress Controller
 
-#Create an IAM OIDC provider and associate it with your cluster
+Create an IAM OIDC provider and associate it with your cluster
 $ eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
 
-#Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller
+Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller
 $ kubectl apply -f ~/Desktop/eks/installation/ingress/rbac-role.yaml
 
-#Deploy the AWS ALB Ingress controller YAML
+Deploy the AWS ALB Ingress controller YAML
 $ kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yaml
 
-#Verify that the deployment was successful and the controller started 
+Verify that the deployment was successful and the controller started 
 $ kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
 
 # Application running on EKS CLuster (2048-game)
