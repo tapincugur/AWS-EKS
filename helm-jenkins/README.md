@@ -26,5 +26,5 @@ This assures your data is saved across crashes, restarts and upgrades.
 
 ### Login to Jenkins Master
 ```bash
-kubectl get svc --all-namespaces  | grep jenkins | grep -i loadbalancer|awk '{print $5}'
+$ URL: kubectl get svc --all-namespaces  | grep jenkins | grep -i loadbalancer|awk '{print $5}'
 ```
