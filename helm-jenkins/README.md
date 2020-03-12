@@ -2,7 +2,7 @@
 Firstly, you should clone this repository on your server.
 You can edit "plugin.txt" file according to your code requirements. 
 
-### Build the Jenkins Docker image
+### Build the Docker Image & Push to AWS ECR Service
 Build your docker image (jenkins-master):
 ```bash
 $ docker build . -t "jenkins-master" -f  Dockerfile
