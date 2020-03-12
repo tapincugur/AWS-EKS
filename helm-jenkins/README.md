@@ -7,7 +7,7 @@ Build your docker image (jenkins-master):
 ```bash
 $ docker build . -t "jenkins-master" -f  Dockerfile
 ```
-### Push the image to AWS ECR Service
+Push the image to AWS ECR Service
 ```bash
 $ eval $( aws ecr get-login --no-include-email --region eu-central-1 --profile ugur-playground | sed 's|https://||' )
 $ docker tag jenkins-master:latest ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-master:latest
