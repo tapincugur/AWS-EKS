@@ -1,4 +1,4 @@
-# Jenkins in Kubernetes
+# Scaling Jenkins in Kubernetes
 Firstly, you should clone this repository on your server.
 You can edit "plugin.txt" file according to your code requirements. 
 
