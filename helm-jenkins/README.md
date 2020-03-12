@@ -1,4 +1,4 @@
-# Scaling Jenkins in Kubernetes
+# Scaling Jenkins in AWS EKS
 Firstly, you should clone this repository on your server.
 You can edit "plugin.txt" file according to your code requirements. 
 
