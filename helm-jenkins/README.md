@@ -45,13 +45,16 @@ $ docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
 
 Manage Jenkins > Configure System > Cloud Section:
 
-```bash
 Kubernetes
+```bash
 $ Name : kubernetes
 $ Kubernetes URL: (Run this command on terminal -> "kubectl cluster-info | grep master|awk '{print $6}'" and then test connection, if there is an issue about connection, run this command "kubectl create clusterrolebinding permissive-binding --clusterrole=cluster-admin --user=admin --user=kubelet --group=system:serviceaccounts")
 $ Kubernetes Namespace: default
 $ Jenkins URL: (Run this command on terminal -> "kubectl get svc --all-namespaces  | grep jenkins | grep -i loadbalancer|awk '{print $4}'")
 $ Jenkins tunnel: "(Run this command on terminal -> "kubectl get svc --all-namespaces  | grep k8s-agent | grep -i ClusterIP|awk '{print $4}'"):50000"
 ```
-
-
+Pod Labels
+```bash
+$ Key: jenkins
+$ Value: slave
+```
