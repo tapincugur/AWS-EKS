@@ -14,11 +14,10 @@ $ docker tag jenkins-master:latest ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com
 $ docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-master:latest
 ```
 
-### Deploy Jenkins helm chart to Kubernetes
+### Deploy Jenkins helm chart to Kubernetes Cluster
 ```bash
 # Deploy the Jenkins helm chart
-# (same command for install and upgrade)
-$ helm upgrade --install jenkins ./helm/jenkins-k8s
+$ helm upgrade --install jenkins ./helm/jenkins-k8s --namespace default
 ```
 
 ### Data persistence
