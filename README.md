@@ -6,7 +6,7 @@ $ aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/C
 Deleting vpc by cloudformation (aws cli command)
 # $ aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 ```
-## Create EKS Cluster (It takes 15 minutes to be done)
+### Create EKS Cluster (It takes 15 minutes to be done)
 ```bash
 You can create EKS Cluster with "aws cli" or "eksctl"
 
@@ -36,8 +36,8 @@ $ eksctl create cluster \
 to check EKS cluster status
 $ aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 ```
-# Kubernetes Dashboard
 ```bash
+# Kubernetes Dashboard
 1) kubernetes dashboard
 $ kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
 2) Apply the service account
