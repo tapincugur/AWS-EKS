@@ -1,11 +1,12 @@
 # Create EKS CLuster
-###If vpc doesn't exist on your cloud account, you can create one.
+```bash
+If vpc doesn't exist on your cloud account, you can create one.
 
-aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/CloudFormation/twosubnet.yaml --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
+$ aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/CloudFormation/twosubnet.yaml --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
 
-#deleting vpc by cloudformation (aws cli command) \
-#aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
-
+deleting vpc by cloudformation (aws cli command)
+# $ aws cloudformation delete-stack --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
+```
 ## Create EKS Cluster with aws-cli&eksctl (It takes 15 minutes to be done)
 #This \
 aws eks --region eu-central-1 --profile ugur-playground create-cluster \
