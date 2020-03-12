@@ -55,31 +55,31 @@ $ Jenkins tunnel: "(Run this command on terminal -> "kubectl get svc --all-names
 ```
 Pod Labels
 ```bash
-$ Key: jenkins
-$ Value: slave
+Key: jenkins
+Value: slave
 ```
 
 Pod Template
 ```bash
-$ Name: jenkins-slave
-$ Labels: jenkins-slave
-$ Usage: "Use this node as much as possible"
+Name: jenkins-slave
+Labels: jenkins-slave
+Usage: "Use this node as much as possible"
 ```
 
 Container Template
 ```bash
-$ Name: jenkins-slave
-$ Docker Image: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
-$ Always pull image	Working directory: /home/jenkins/agent
-$ Command to run: /bin/sh -c
-$ Arguments to pass to the command: cat
+Name: jenkins-slave
+Docker Image: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
+Always pull image	Working directory: /home/jenkins/agent
+Command to run: /bin/sh -c
+Arguments to pass to the command: cat
 ```
 
 ### Create Two Jobs to Check Scaling
 ```bash
 Create Job 1
-$ Restrict where this project can be run: jenkins-slave
-$ Execute shell: "sleep 120"
+Restrict where this project can be run: jenkins-slave
+Execute shell: "sleep 120"
 Create Job 2 like Job1 
 ```
 
