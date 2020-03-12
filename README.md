@@ -36,8 +36,9 @@ $ eksctl create cluster \
 to check EKS cluster status
 $ aws eks --region eu-central-1 --profile ugur-playground describe-cluster --name eks-test-k8s --query cluster.status
 ```
+
+### Kubernetes Dashboard
 ```bash
-# Kubernetes Dashboard
 1) kubernetes dashboard
 $ kubectl apply  -f ~/Desktop/eks/installation/kubernetes-dashboard.yaml
 2) Apply the service account
@@ -49,22 +50,25 @@ copy token to login
 $ kubectl proxy
 5) login 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
-
-# Helm
+```
+### Helm
+```bash
 $ kubectl create serviceaccount tiller --namespace kube-system 
 $ kubectl apply -f ~/Desktop/eks/installation/rbac-config.yaml
-
-# Prometheus
+```
+### Prometheus
+```bash
 $ kubectl create namespace prometheus #( You can change type : LoadBalancer to access from Internet )
 $ helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
-
-# Grafana 
+```
+### Grafana
+```bash
 $ helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
 
 #I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
-
-# ALB Ingress Controller
-
+```
+### ALB Ingress Controller
+```bash
 Create an IAM OIDC provider and associate it with your cluster
 $ eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
 
@@ -76,8 +80,9 @@ $ kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yam
 
 Verify that the deployment was successful and the controller started 
 $ kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
-
-# Application running on EKS CLuster (2048-game)
+```
+### Application running on EKS CLuster (2048-game)
+```bash
 $ kubectl apply -f ~/Desktop/eks/installation/2048/2048-namespace.yaml
 $ kubectl apply -f ~/Desktop/eks/installation/2048/2048-deployment.yaml
 $ kubectl apply -f ~/Desktop/eks/installation/2048/2048-service.yaml
