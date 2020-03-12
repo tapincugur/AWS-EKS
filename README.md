@@ -8,7 +8,7 @@ Deleting vpc by cloudformation (aws cli command)
 ```
 ## Create EKS Cluster with aws-cli&eksctl (It takes 15 minutes to be done)
 ```bash
-You can create EKS with "aws cli" or "eksctl"
+You can create EKS Cluster with "aws cli" or "eksctl"
 
 aws cli command:
 $ aws eks --region eu-central-1 --profile ugur-playground create-cluster \
