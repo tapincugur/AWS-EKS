@@ -41,5 +41,15 @@ $ eval $( aws ecr get-login --no-include-email --region eu-central-1 --profile u
 $ docker tag jenkins-slave:latest ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
 $ docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
 ```
+### Configure to Jenkins Kubernetes Plugin for Scaling
+
+Manage Jenkins > Configure System > Cloud Section
+
+
+
+
+
+
+
 
 
