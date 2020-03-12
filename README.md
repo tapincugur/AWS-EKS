@@ -59,26 +59,26 @@ $ kubectl create namespace prometheus #( You can change type : LoadBalancer to a
 $ helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
 
 # Grafana 
-helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
+$ helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
 
 #I share with you some grafana dashboards which you can use for monitoring your env., are in dashboards folder.
 
 # ALB Ingress Controller
 
-#Create an IAM OIDC provider and associate it with your cluster \
-eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
+#Create an IAM OIDC provider and associate it with your cluster
+$ eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
 
-#Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller \
-kubectl apply -f ~/Desktop/eks/installation/ingress/rbac-role.yaml
+#Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller
+$ kubectl apply -f ~/Desktop/eks/installation/ingress/rbac-role.yaml
 
-#Deploy the AWS ALB Ingress controller YAML \
-kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yaml
+#Deploy the AWS ALB Ingress controller YAML
+$ kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yaml
 
-#Verify that the deployment was successful and the controller started \
-kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
+#Verify that the deployment was successful and the controller started 
+$ kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
 
 # Application running on EKS CLuster (2048-game)
-kubectl apply -f ~/Desktop/eks/installation/2048/2048-namespace.yaml \
-kubectl apply -f ~/Desktop/eks/installation/2048/2048-deployment.yaml \
-kubectl apply -f ~/Desktop/eks/installation/2048/2048-service.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/2048-namespace.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/2048-deployment.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/2048-service.yaml
 ```
