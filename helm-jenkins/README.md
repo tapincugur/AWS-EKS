@@ -74,3 +74,18 @@ $ Always pull image	Working directory: /home/jenkins/agent
 $ Command to run: /bin/sh -c
 $ Arguments to pass to the command: cat
 ```
+
+### Create Two Jobs to Check Scaling
+```bash
+Create Job 1
+$ Restrict where this project can be run: jenkins-slave
+$ Execute shell: "sleep 120"
+Create Job 2 like Job1 
+```
+
+### Check Jenkins Slave Pods
+```bash
+$ kubectl get pods --all-namespaces -o wide  |grep jenkins
+```
+
+
