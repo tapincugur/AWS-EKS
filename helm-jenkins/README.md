@@ -58,3 +58,19 @@ Pod Labels
 $ Key: jenkins
 $ Value: slave
 ```
+
+Pod Template
+```bash
+$ Name: jenkins-slave
+$ Labels: jenkins-slave
+$ Usage: "Use this node as much as possible"
+```
+
+Container Template
+```bash
+$ Name: jenkins-slave
+$ Docker Image: ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
+$ Always pull image	Working directory: /home/jenkins/agent
+$ Command to run: /bin/sh -c
+$ Arguments to pass to the command: cat
+```
