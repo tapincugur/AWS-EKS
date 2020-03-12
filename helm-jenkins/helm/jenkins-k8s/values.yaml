@@ -4,28 +4,10 @@
 
 initContainerImage: "alpine:3.10.2"
 
-#replicaCount: 1
-#imagePullSecrets:
-#image:
-#  repository: IMAGE:LATEST
-#  pullPolicy: Always
-
-#  resources:
-#    requests:
-#      cpu: 500m
-#      memory: 500Mi
-#    limits:
-#      memory: 500Mi
-
 master:
   adminUser: "admin"
   adminPassword: "1234QWERqwer!"
 
-
-# ## Set the admin user
-# adminUser: YWRtaW4
-# ## Make sure to replace the default password
-# adminPassword: cGFzc3dvcmQ
 service:
   name: jenkins-k8s
   type: LoadBalancer
