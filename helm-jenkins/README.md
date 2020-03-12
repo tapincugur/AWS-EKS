@@ -20,7 +20,11 @@ $ docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-master:lates
 $ helm upgrade --install jenkins ./helm/jenkins-k8s --namespace default
 ```
 
-### Data persistence
+### Data Persistence
 By default, in Kubernetes, the Jenkins deployment uses a persistent volume claim that is mounted to `/var/jenkins_home`.
-This assures your data is saved across crashes, restarts and upgrades.   
+This assures your data is saved across crashes, restarts and upgrades.
 
+### Login to Jenkins Master
+```bash
+kubectl get svc --all-namespaces  | grep jenkins | grep -i loadbalancer|awk '{print $5}'
+```
