@@ -44,6 +44,7 @@ $ docker push ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/jenkins-slave:latest
 ### Configure to Jenkins Kubernetes Plugin for Scaling
 
 Manage Jenkins > Configure System > Cloud Section:
+Following steps of the jpeg files (1.jpeg, 2.jpeg, 3.jpeg)
 
 Kubernetes
 ```bash
