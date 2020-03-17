@@ -61,6 +61,10 @@ $ kubectl apply -f ~/Desktop/eks/installation/rbac-config.yaml
 $ kubectl create namespace prometheus #( You can change type : LoadBalancer to access from Internet )
 $ helm install -f ~/Desktop/eks/installation/prometheus-values.yaml stable/prometheus --name prometheus --namespace prometheus
 ```
+### installation metric-server
+```bash
+$ kubectl create -f deploy/1.8+/
+```
 ### Grafana
 ```bash
 $ helm install -f ~/Desktop/eks/installation/grafana-values.yaml stable/grafana --name grafana --namespace grafana 
