@@ -74,7 +74,7 @@ Note: I share with you some grafana dashboards which you can use for monitoring 
 ### ALB Ingress Controller
 ```bash
 
-Firstly, you should add the tag on private and public subnets.
+Firstly, you should add the tag on private and public subnets for subnet auto discovery. to allow ingress controller auto discover subnets used for ALBs 
 
 Private:
 $ Key: kubernetes.io/role/internal-elb Value: "Empty or just write 1"
