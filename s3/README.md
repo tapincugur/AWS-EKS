@@ -1,7 +1,6 @@
 ### Helm Chart Repository using AWS S3
-```bash
 to create s3 bucket with the bucket policy's like:
-
+```bash
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -32,14 +31,15 @@ to create s3 bucket with the bucket policy's like:
   ]
 }
 ```
-
-```bash
 Firstly, edit "~/.aws/config" file with the testuser's access&secret keys, and region which you wanna use infrastructure. And then follow these steps:
+```bash
 $ helm plugin install https://github.com/hypnoglow/helm-s3.git 
 $ helm S3 init s3://helm-chart-repo/charts
 $ helm repo add my-charts s3://helm-chart-repo/charts
 $ helm repo list
-Example: 
+```
+Example:
+```bash
 $ helm create application-chart
 $ helm package --version 0.0.1 application-chart 
 $ helm s3 push application-chart-0.0.1.tgz coolcharts
