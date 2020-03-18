@@ -73,6 +73,13 @@ Note: I share with you some grafana dashboards which you can use for monitoring 
 ```
 ### ALB Ingress Controller
 ```bash
+
+Firstly, you should add the tag on private and public subnet.
+Private:
+$ Key: kubernetes.io/role/internal-elb Value: "Empty or just write 1"
+Public:
+$ Key: kubernetes.io/role/elb: "Empty or just write 1"
+
 Go to IAM console and create ingress controller policy, and attach that policy to EKS Cluster Worker Nodes Role
 I share with you policy file "ingress-policy.json"
 
@@ -82,7 +89,7 @@ $ eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --re
 Deploy RBAC Roles and RoleBindings needed by the AWS ALB Ingress controller
 $ kubectl apply -f ~/Desktop/eks/installation/ingress/rbac-role.yaml
 
-Deploy the AWS ALB Ingress controller YAML
+Deploy the AWS ALB Ingress controller YAML ( Edit line "- --cluster-name=EKS_CLUSTER_NAME" Your EKS Cluster Name )
 $ kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yaml
 
 Verify that the deployment was successful and the controller started 
