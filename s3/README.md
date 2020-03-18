@@ -1,4 +1,4 @@
-### Helm Chart Repository using AWS S3
+# Helm Chart Repository using AWS S3
 to create s3 bucket with the bucket policy's like:
 ```bash
 {
