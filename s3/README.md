@@ -32,7 +32,7 @@ to create s3 bucket with the bucket policy's like:
   ]
 }
 ```
-### Helm Chart Repository using AWS S3
+
 ```bash
 Firstly, edit "~/.aws/config" file with the testuser's access&secret keys, and region which you wanna use infrastructure. And then follow these steps:
 $ helm plugin install https://github.com/hypnoglow/helm-s3.git 
