@@ -1,18 +1,36 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: "external-ingress"
-  namespace: "ingress"
+  name: "2048-ingress"
+  namespace: "2048-game"
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+    #alb.ingress.kubernetes.io/security-groups: sg-0eb7c26e84566a9c7
+    #ingress.kubernetes.io/rewrite-target: /
   labels:
-    app: external-ingress
+    app: 2048-ingress
+#spec:
+#  rules:
+#    - http:
+#        paths:
+#          - path: /*
+#            backend:
+#              serviceName: "service-2048"
+#              servicePort: 80
 spec:
   rules:
-    - http:
-        paths:
-          - path: /*
-            backend:
-              serviceName: "backend-service"
-              servicePort: 80
+  - host: a1.com
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: service-2048
+          servicePort: 80
+  - host: a2.com
+    http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: service-2048-2
+          servicePort: 80
