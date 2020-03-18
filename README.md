@@ -74,14 +74,15 @@ Note: I share with you some grafana dashboards which you can use for monitoring 
 ### ALB Ingress Controller
 ```bash
 
-Firstly, you should add the tag on private and public subnet.
+Firstly, you should add the tag on private and public subnets.
+
 Private:
 $ Key: kubernetes.io/role/internal-elb Value: "Empty or just write 1"
 Public:
 $ Key: kubernetes.io/role/elb: "Empty or just write 1"
 
 Go to IAM console and create ingress controller policy, and attach that policy to EKS Cluster Worker Nodes Role
-I share with you policy file "ingress-policy.json"
+I share with you policy file "./ingress-policy.json"
 
 Create an IAM OIDC provider and associate it with your cluster
 $ eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
