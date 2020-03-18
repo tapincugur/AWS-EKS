@@ -1,4 +1,4 @@
-# Create EKS CLuster
+git# Create EKS CLuster
 ```bash
 If vpc doesn't exist on your cloud account, you can create one(Two Public, Two Private Subnet in VPC).
 $ aws cloudformation deploy --template-file /Users/ugur.tapinc/Desktop/scripts/CloudFormation/twosubnet.yaml --stack-name k8s-vpc-test --region eu-central-1 --profile ugur-playground
@@ -73,6 +73,9 @@ Note: I share with you some grafana dashboards which you can use for monitoring 
 ```
 ### ALB Ingress Controller
 ```bash
+Go to IAM console and create ingress controller policy, and attach that policy to EKS Cluster Worker Nodes Role
+I share with you policy file "ingress-policy.json"
+
 Create an IAM OIDC provider and associate it with your cluster
 $ eksctl utils associate-iam-oidc-provider --cluster=eks-k8s-test --approve --region eu-central-1 --profile ugur-playground
 
@@ -84,6 +87,8 @@ $ kubectl apply -f ~/Desktop/eks/installation/ingress/alb-ingress-controller.yam
 
 Verify that the deployment was successful and the controller started 
 $ kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{print $1}'
+
+Also, Shared with you ingress file examples "./ingress/ingress.yaml"
 ```
 ### Application running on EKS CLuster (2048-game)
 ```bash
