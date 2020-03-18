@@ -100,7 +100,16 @@ Also, Shared with you ingress file examples "./ingress/ingress.yaml"
 ```
 ### Application running on EKS CLuster (2048-game)
 ```bash
-$ kubectl apply -f ~/Desktop/eks/installation/2048/2048-namespace.yaml
-$ kubectl apply -f ~/Desktop/eks/installation/2048/2048-deployment.yaml
-$ kubectl apply -f ~/Desktop/eks/installation/2048/2048-service.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/a1.com/2048-namespace.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/a1.com/2048-deployment.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/a1.com/2048-service.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/a2.com/2048-deployment.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/2048/a2.com/2048-service.yaml
+$ kubectl apply -f ~/Desktop/eks/installation/ingress/ingress.yaml
+
+Ping that url: "kubectl get ingress  --all-namespaces   |grep 2048-game |awk '{print $4}'"
+and edit your local hosts file like:
+sudo vi /etc/hosts
+1.1.1.1 a1.com a2.com
+ingress routes traffic a1.com to "service-2048" service , and a2.com traffic to "service-2048-2" service.
 ```
