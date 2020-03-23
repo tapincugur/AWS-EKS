@@ -99,6 +99,13 @@ $ kubectl get pods -n kube-system | grep -i "alb-ingress-controller" | awk '{pri
 
 Also, Shared with you ingress file examples "./ingress/ingress.yaml"
 ```
+### EKS CLuster Authentication Config
+Edit configmap/aws-auth file to add iam users/roles.
+```bash
+You can see an examples file "auth.yaml" about how to change configmap/aws-auth.
+$ kubectl edit -n kube-system configmap/aws-auth 
+```
+
 ### Application running on EKS CLuster (2048-game)
 ```bash
 $ kubectl apply -f ~/Desktop/eks/installation/2048/a1.com/2048-namespace.yaml
